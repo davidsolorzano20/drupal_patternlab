@@ -1,0 +1,63 @@
+---
+# If you need to run multiple instances of Drupal VM, set a unique hostname,
+# machine name, and IP address for each instance.
+vagrant_hostname: drupal.local
+vagrant_machine_name: drupal-patternlab
+vagrant_ip: 0.0.0.0
+
+drupal_composer_install_dir: "/var/www/drupalvm"
+
+drupal_build_composer_project: false
+drupal_install_site: false
+
+drupalvm_webserver: nginx
+nginx_remove_default_vhost: true
+
+# Comment out any extra utilities you don't want to install. If you don't want
+# to install *any* extras, make set this value to an empty set, e.g. `[]`.
+installed_extras:
+  - adminer
+  - blackfire
+  - drupalconsole
+  - drush
+  # - elasticsearch
+  - java
+  - mailhog
+  # - memcached
+  # - newrelic
+  - nodejs
+  - pimpmylog
+  # - redis
+  # - ruby
+  # - selenium
+  #- solr
+  # - tideways
+  # - upload-progress
+  - varnish
+  - xdebug
+  # - xhprof
+
+# Add any extra apt or yum packages you would like installed.
+extra_packages:
+  - sqlite
+  - php7.1-zip
+
+
+php_version: "7.1"
+php_memory_limit: "512M"
+drush_version: "8.1.15"
+
+post_provision_scripts:
+  #- "{{ config_dir }}/scripts/drupalvm/configure-solr.sh"
+  #- "{{ config_dir }}/scripts/drupalvm/post-provision.sh"
+  # - "../examples/scripts/configure-solr.sh"
+
+# Node.js configuration (if enabled above).
+# Valid examples: "0.10", "0.12", "4.x", "5.x", "6.x".
+nodejs_version: "6.x"
+
+# Solr Configuration (if enabled above).
+solr_version: "6.6.0"
+solr_xms: "64M"
+solr_xmx: "512M"
+
